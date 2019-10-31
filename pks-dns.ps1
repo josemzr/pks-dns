@@ -96,5 +96,8 @@ else{
 $k8sFQDN = ($output | Where-Object Name -eq $sourceK8scluster).parameters.kubernetes_master_host
 Write-Output "Master FQDN is $k8sFQDN"
 
+$k8sFQDNPROC = $k8sFQDN.Split(".")[0]
+Write-Output "Processed FQDN is $k8sFQDNPROC"
+
 #### Connect to remote host via SSH to run DNS add. Requires sshpass and openssh-clients packages.
-/usr/bin/sshpass -p $RemotePass /usr/bin/ssh -o 'StrictHostKeyChecking no' $RemoteUser@$RemoteServer "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -Command "Add-DnsServerResourceRecordA -ZoneName $DNSZoneName -Name $PKSCluster -IPv4Address $k8sIP -CreatePtr -ComputerName $DNSServerName""
+/usr/bin/sshpass -p $RemotePass /usr/bin/ssh -o 'StrictHostKeyChecking no' $RemoteUser@$RemoteServer "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -Command "Add-DnsServerResourceRecordA -ZoneName $DNSZoneName -Name $k8sFQDNPROC -IPv4Address $k8sIP -CreatePtr -ComputerName $DNSServerName""
