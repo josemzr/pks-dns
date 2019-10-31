@@ -133,7 +133,7 @@ spec:
               key: DNSServerName
       containers:
         - name: pks-dns-cleanup
-          image: chipzoller/pks-dns:1.1
+          image: josemzr1/pks-dns-cse:latest
           command: ["/kubectl", "delete", "secrets/pks-dns-secrets", "configmaps/pks-dns-configs"]
       restartPolicy: OnFailure
       serviceAccountName: pks-dns
