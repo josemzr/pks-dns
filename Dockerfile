@@ -3,7 +3,7 @@ LABEL maintainer="Chip Zoller <chipzoller@gmail.com>"
 LABEL description="This image extracts the hostname and master IP \
 from a Kubernetes cluster provisioned from VMware PKS \
 and automates the DNS record creation on a remote machine."
-ADD https://raw.githubusercontent.com/chipzoller/pks-dns/master/pks-dns.ps1 /
+ADD https://raw.githubusercontent.com/josemzr/pks-dns/master/pks-dns.ps1 /
 RUN apt-get update && apt-get install -y curl \
     openssh-client jq \
     sshpass && rm -rf /var/lib/apt/lists/*
