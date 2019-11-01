@@ -64,8 +64,8 @@ $access_token = $oidc_tokens.access_token
 #### Loop to check PKS API for master IP. The pod will get pulled and started often times much before the PKS API has the IP.
 #### Sleep for 60 seconds until the IP is returned, then continue.
 Do {
-    Write-Output "Sleeping for 60 seconds."
-    Start-Sleep -s 60
+    Write-Output "Sleeping for 10 seconds."
+    Start-Sleep -s 10
     $URI = ("https://" + $PKSServer + ":9021/v1/clusters")
     $headers = @{
         'accept' = 'application/json'
